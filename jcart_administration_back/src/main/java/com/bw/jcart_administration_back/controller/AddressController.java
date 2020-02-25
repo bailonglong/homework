@@ -11,6 +11,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/address")
 public class AddressController {
+    // 获取地址
     @GetMapping("/getListByCustomerId")
     public List<AddressListOutDTO> getListByCustomerId(@RequestParam Integer customerId){
         return null;
