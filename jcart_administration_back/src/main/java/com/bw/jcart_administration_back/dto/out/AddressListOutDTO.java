@@ -7,14 +7,6 @@ public class AddressListOutDTO {
     private String content;
     private String tag;
 
-    public AddressListOutDTO(Integer addressId, String receiverName, String receiverMobile, String content, String tag) {
-        this.addressId = addressId;
-        this.receiverName = receiverName;
-        this.receiverMobile = receiverMobile;
-        this.content = content;
-        this.tag = tag;
-    }
-
     public Integer getAddressId() {
         return addressId;
     }

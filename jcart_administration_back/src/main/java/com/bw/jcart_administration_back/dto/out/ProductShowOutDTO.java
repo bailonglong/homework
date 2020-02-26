@@ -12,24 +12,9 @@ public class ProductShowOutDTO {
     private Byte status;
     private String mainPicUrl;
     private Integer rewordPoints;
-    private Integer sortOtder;
+    private Integer sortOrder;
     private String description;
     private List<String> otherPicUrls;
-
-    public ProductShowOutDTO(Integer productId, String productCode, String productName, Double price, Double discount, Integer stockQuantity, Byte status, String mainPicUrl, Integer rewordPoints, Integer sortOtder, String description, List<String> otherPicUrls) {
-        this.productId = productId;
-        this.productCode = productCode;
-        this.productName = productName;
-        this.price = price;
-        this.discount = discount;
-        this.stockQuantity = stockQuantity;
-        this.status = status;
-        this.mainPicUrl = mainPicUrl;
-        this.rewordPoints = rewordPoints;
-        this.sortOtder = sortOtder;
-        this.description = description;
-        this.otherPicUrls = otherPicUrls;
-    }
 
     public Integer getProductId() {
         return productId;
@@ -103,12 +88,12 @@ public class ProductShowOutDTO {
         this.rewordPoints = rewordPoints;
     }
 
-    public Integer getSortOtder() {
-        return sortOtder;
+    public Integer getSortOrder() {
+        return sortOrder;
     }
 
-    public void setSortOtder(Integer sortOtder) {
-        this.sortOtder = sortOtder;
+    public void setSortOrder(Integer sortOrder) {
+        this.sortOrder = sortOrder;
     }
 
     public String getDescription() {

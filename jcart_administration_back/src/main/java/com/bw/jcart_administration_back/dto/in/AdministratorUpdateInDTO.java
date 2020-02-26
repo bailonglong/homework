@@ -2,18 +2,10 @@ package com.bw.jcart_administration_back.dto.in;
 
 public class AdministratorUpdateInDTO {
     private Integer administratorId;
-    private String tralName;
+    private String realName;
     private String password;
     private String email;
     private Byte status;
-
-    public AdministratorUpdateInDTO(Integer administratorId, String tralName, String password, String email, Byte status) {
-        this.administratorId = administratorId;
-        this.tralName = tralName;
-        this.password = password;
-        this.email = email;
-        this.status = status;
-    }
 
     public Integer getAdministratorId() {
         return administratorId;
@@ -23,12 +15,12 @@ public class AdministratorUpdateInDTO {
         this.administratorId = administratorId;
     }
 
-    public String getTralName() {
-        return tralName;
+    public String getRealName() {
+        return realName;
     }
 
-    public void setTralName(String tralName) {
-        this.tralName = tralName;
+    public void setRealName(String realName) {
+        this.realName = realName;
     }
 
     public String getPassword() {

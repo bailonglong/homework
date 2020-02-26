@@ -1,7 +1,8 @@
-package com.bw.jcart_administration_back.dto.out;
+package com.bw.jcart_administration_back.dto.in;
 
-public class ProductListOutDTO {
-    private Integer productId;
+import java.util.List;
+
+public class ProductCreateInDTO {
     private String productCode;
     private String productName;
     private Double price;
@@ -9,14 +10,10 @@ public class ProductListOutDTO {
     private Integer stockQuantity;
     private Byte status;
     private String mainPicUrl;
-
-    public Integer getProductId() {
-        return productId;
-    }
-
-    public void setProductId(Integer productId) {
-        this.productId = productId;
-    }
+    private Integer rewordPoints;
+    private Integer sortOrder;
+    private String description;
+    private List<String> otherPicUrls;
 
     public String getProductCode() {
         return productCode;
@@ -72,5 +69,37 @@ public class ProductListOutDTO {
 
     public void setMainPicUrl(String mainPicUrl) {
         this.mainPicUrl = mainPicUrl;
+    }
+
+    public Integer getRewordPoints() {
+        return rewordPoints;
+    }
+
+    public void setRewordPoints(Integer rewordPoints) {
+        this.rewordPoints = rewordPoints;
+    }
+
+    public Integer getSortOrder() {
+        return sortOrder;
+    }
+
+    public void setSortOrder(Integer sortOrder) {
+        this.sortOrder = sortOrder;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public List<String> getOtherPicUrls() {
+        return otherPicUrls;
+    }
+
+    public void setOtherPicUrls(List<String> otherPicUrls) {
+        this.otherPicUrls = otherPicUrls;
     }
 }
