@@ -1,10 +1,10 @@
 package com.bw.jcart_administration_back.controller;
 
-import io.cjf.jcartadministrationback.dto.in.ReturnSearchInDTO;
-import io.cjf.jcartadministrationback.dto.in.ReturnUpdateActionInDTO;
-import io.cjf.jcartadministrationback.dto.out.PageOutDTO;
-import io.cjf.jcartadministrationback.dto.out.ReturnListOutDTO;
-import io.cjf.jcartadministrationback.dto.out.ReturnShowOutDTO;
+import com.bw.jcart_administration_back.dto.in.ReturnSearchInDTO;
+import com.bw.jcart_administration_back.dto.in.ReturnUpdateActionInDTO;
+import com.bw.jcart_administration_back.dto.out.PageOutDTO;
+import com.bw.jcart_administration_back.dto.out.ReturnListOutDTO;
+import com.bw.jcart_administration_back.dto.out.ReturnShowOutDTO;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

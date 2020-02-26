@@ -1,7 +1,7 @@
 package com.bw.jcart_administration_back.controller;
 
-import io.cjf.jcartadministrationback.dto.in.OrderSearchInDTO;
-import io.cjf.jcartadministrationback.dto.out.*;
+import com.bw.jcart_administration_back.dto.in.OrderSearchInDTO;
+import com.bw.jcart_administration_back.dto.out.*;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
