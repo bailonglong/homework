@@ -60,5 +60,8 @@ public class ProductController {
         productService.batchDelete(productIds);
     }
 
-
+    @GetMapping("/test")
+    public String test(){
+        return "测试";
+    }
 }
