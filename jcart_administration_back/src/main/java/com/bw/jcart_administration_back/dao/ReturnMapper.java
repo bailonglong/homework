@@ -1,6 +1,7 @@
 package com.bw.jcart_administration_back.dao;
 
-import io.cjf.jcartadministrationback.po.Return;
+
+import com.bw.jcart_administration_back.po.Return;
 
 public interface ReturnMapper {
     int deleteByPrimaryKey(Integer returnId);

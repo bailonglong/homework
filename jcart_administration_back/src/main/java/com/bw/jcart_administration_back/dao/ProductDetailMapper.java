@@ -1,6 +1,6 @@
 package com.bw.jcart_administration_back.dao;
 
-import io.cjf.jcartadministrationback.po.ProductDetail;
+import com.bw.jcart_administration_back.po.ProductDetail;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 

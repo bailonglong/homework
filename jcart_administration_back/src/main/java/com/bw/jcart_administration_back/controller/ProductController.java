@@ -6,6 +6,7 @@ import com.bw.jcart_administration_back.dto.out.ProductListOutDTO;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/product")
 public class ProductController {
     @PostMapping("/seatch")
