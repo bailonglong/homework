@@ -4,6 +4,8 @@ import com.bw.jcart_administration_back.dto.in.ProductCreateInDTO;
 import com.bw.jcart_administration_back.dto.in.ProductUpdateInDTO;
 import com.bw.jcart_administration_back.dto.out.ProductListOutDTO;
 import com.bw.jcart_administration_back.dto.out.ProductShowOutDTO;
+import com.github.pagehelper.Page;
+
 import java.util.List;
 
 public interface ProductService {
@@ -15,7 +17,7 @@ public interface ProductService {
 
     void batchDelete(List<Integer> productIds);
 
-//    Page<ProductListOutDTO> search(Integer pageNum);
+    Page<ProductListOutDTO> search(Integer pageNum);
 
     ProductShowOutDTO getById(Integer productId);
 }

@@ -5,10 +5,13 @@ import com.bw.jcart_administration_back.dao.ProductDetailMapper;
 import com.bw.jcart_administration_back.dao.ProductMapper;
 import com.bw.jcart_administration_back.dto.in.ProductCreateInDTO;
 import com.bw.jcart_administration_back.dto.in.ProductUpdateInDTO;
+import com.bw.jcart_administration_back.dto.out.ProductListOutDTO;
 import com.bw.jcart_administration_back.dto.out.ProductShowOutDTO;
 import com.bw.jcart_administration_back.po.Product;
 import com.bw.jcart_administration_back.po.ProductDetail;
 import com.bw.jcart_administration_back.service.ProductService;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
@@ -86,6 +89,13 @@ public class ProductServiceImpl implements ProductService {
     public void batchDelete(List<Integer> productIds) {
         productMapper.batchDelete(productIds);
         productDetailMapper.batchDelete(productIds);
+    }
+
+    @Override
+    public Page<ProductListOutDTO> search(Integer pageNum) {
+        PageHelper.startPage(pageNum, 10);
+        Page<ProductListOutDTO> page = productMapper.search();
+        return page;
     }
 
     @Override
