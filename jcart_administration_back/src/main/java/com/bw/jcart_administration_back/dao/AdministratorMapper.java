@@ -2,6 +2,7 @@ package com.bw.jcart_administration_back.dao;
 
 
 import com.bw.jcart_administration_back.po.Administrator;
+import org.apache.ibatis.annotations.Param;
 
 public interface AdministratorMapper {
     int deleteByPrimaryKey(Integer administratorId);
@@ -15,4 +16,7 @@ public interface AdministratorMapper {
     int updateByPrimaryKeySelective(Administrator record);
 
     int updateByPrimaryKey(Administrator record);
+    //    custom
+
+    Administrator selectByUsername(@Param("username") String username);
 }
