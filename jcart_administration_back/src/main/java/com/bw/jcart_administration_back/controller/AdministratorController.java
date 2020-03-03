@@ -1,14 +1,14 @@
 package com.bw.jcart_administration_back.controller;
 
+import at.favre.lib.crypto.bcrypt.BCrypt;
+import com.bw.jcart_administration_back.constant.ClientExceptionConstant;
 import com.bw.jcart_administration_back.dto.in.*;
-import com.bw.jcart_administration_back.dto.out.AdministratorGetProfileOutDTO;
-import com.bw.jcart_administration_back.dto.out.AdministratorListOutDTO;
-import com.bw.jcart_administration_back.dto.out.AdministratorShowOutDTO;
-import com.bw.jcart_administration_back.dto.out.PageOutDTO;
+import com.bw.jcart_administration_back.dto.out.*;
 import com.bw.jcart_administration_back.enumeration.AdministratorStatus;
 import com.bw.jcart_administration_back.exception.ClientException;
 import com.bw.jcart_administration_back.po.Administrator;
 import com.bw.jcart_administration_back.service.AdministratorService;
+import com.bw.jcart_administration_back.util.JWTUtil;
 import com.github.pagehelper.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -18,17 +18,34 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@CrossOrigin
 @RequestMapping("/administrator")
+@CrossOrigin
 public class AdministratorController {
+
     @Autowired
     private AdministratorService administratorService;
-    // 登录
+
+    @Autowired
+    private JWTUtil jwtUtil;
+
     @GetMapping("/login")
-    public String login(AdministratorLoginDTO administratorLoginDTO) throws ClientException {
-        return null;
+    public AdministratorLoginOutDTO login(AdministratorLoginInDTO administratorLoginInDTO) throws ClientException {
+        Administrator administrator = administratorService.getByUsername(administratorLoginInDTO.getUsername());
+        if (administrator == null){
+            throw new ClientException(ClientExceptionConstant.ADMINISTRATOR_USERNAME_NOT_EXIST_ERRCODE, ClientExceptionConstant.ADMINISTRATOR_USERNAME_NOT_EXIST_ERRMSG);
+        }
+        String encPwdDB = administrator.getEncryptedPassword();
+        BCrypt.Result result = BCrypt.verifyer().verify(administratorLoginInDTO.getPassword().toCharArray(), encPwdDB);
+
+        if (result.verified) {
+            AdministratorLoginOutDTO administratorLoginOutDTO = jwtUtil.issueToken(administrator);
+            return administratorLoginOutDTO;
+        }else {
+            throw new ClientException(ClientExceptionConstant.ADNINISTRATOR_PASSWORD_INVALID_ERRCODE, ClientExceptionConstant.ADNINISTRATOR_PASSWORD_INVALID_ERRMSG);
+        }
     }
-    // 管理员获取Profile
+
+
     @GetMapping("/getProfile")
     public AdministratorGetProfileOutDTO getProfile(@RequestAttribute Integer administratorId){
         Administrator administrator = administratorService.getById(administratorId);
@@ -42,6 +59,7 @@ public class AdministratorController {
 
         return administratorGetProfileOutDTO;
     }
+
     @PostMapping("/updateProfile")
     public void updateProfile(@RequestBody AdministratorUpdateProfileInDTO administratorUpdateProfileInDTO,
                               @RequestAttribute Integer administratorId){
@@ -53,12 +71,22 @@ public class AdministratorController {
         administratorService.update(administrator);
 
     }
-    @PostMapping("/getPwdResetCode")
-    public String getPwdResetCode(@RequestParam String email){
-        return  null;
+
+    @PostMapping("/changePwd")
+    public void changePwd(@RequestBody AdministratorChangePwdInDTO administratorChangePwdInDTO,
+                          @RequestAttribute Integer administratorId){
+
     }
+
+    @GetMapping("/getPwdResetCode")
+    public String getPwdResetCode(@RequestParam String email){
+        return null;
+    }
+
     @PostMapping("/resetPwd")
-    public void resetPwd(@RequestBody AdministratorResrtPwdInDTO administratorResrtPwdInDTO){}
+    public void resetPwd(@RequestBody AdministratorResetPwdInDTO administratorResetPwdInDTO){
+
+    }
 
     @GetMapping("/getList")
     public PageOutDTO<AdministratorListOutDTO> getList(@RequestParam(required = false, defaultValue = "1") Integer pageNum){
