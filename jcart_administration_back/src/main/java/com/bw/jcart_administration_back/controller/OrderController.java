@@ -1,14 +1,9 @@
 package com.bw.jcart_administration_back.controller;
 
 import com.bw.jcart_administration_back.dto.in.OrderCheckoutInDTO;
-import com.bw.jcart_administration_back.dto.in.OrderProductInDTO;
 import com.bw.jcart_administration_back.dto.in.OrderSearchInDTO;
 import com.bw.jcart_administration_back.dto.out.*;
-import com.bw.jcart_administration_back.enumeration.OrderStatus;
-import com.bw.jcart_administration_back.po.Order;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @CrossOrigin
@@ -23,16 +18,7 @@ public class OrderController {
     @PostMapping("/checkout")
     public Long checkout(@RequestBody OrderCheckoutInDTO orderCheckoutInDTO,
                         @RequestAttribute Integer customerId){
-        List<OrderProductInDTO> orderProducts = orderCheckoutInDTO.getOrderProducts();
-        orderProducts.stream().map(orderProduct -> {
-            Integer productId = orderProduct.getProductId();
 
-        })
-
-
-        Order order = new Order();
-        order.setCustomerId(customerId);
-        order.setStatus((byte) OrderStatus.ToProcess.ordinal());
         return null;
     }
 
