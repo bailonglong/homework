@@ -25,6 +25,12 @@ public class ProductServiceImpl implements ProductService {
     private ProductDetailMapper productDetailMapper;
 
     @Override
+    public Product getById(Integer productId) {
+        Product product = productMapper.selectByPrimaryKey(productId);
+        return product;
+    }
+
+    @Override
     public Integer create(ProductCreateInDTO productCreateInDTO) {
         Product product = new Product();
         product.setProductCode(productCreateInDTO.getProductCode());
@@ -100,7 +106,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public ProductShowOutDTO getById(Integer productId) {
+    public ProductShowOutDTO getShowById(Integer productId) {
         Product product = productMapper.selectByPrimaryKey(productId);
         ProductDetail productDetail = productDetailMapper.selectByPrimaryKey(productId);
 

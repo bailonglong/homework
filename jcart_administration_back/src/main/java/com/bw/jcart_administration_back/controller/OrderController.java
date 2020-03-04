@@ -3,6 +3,8 @@ package com.bw.jcart_administration_back.controller;
 import com.bw.jcart_administration_back.dto.in.OrderCheckoutInDTO;
 import com.bw.jcart_administration_back.dto.in.OrderSearchInDTO;
 import com.bw.jcart_administration_back.dto.out.*;
+import com.bw.jcart_administration_back.service.OrderService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -10,6 +12,8 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/order")
 public class OrderController {
 
+    @Autowired
+    private OrderService orderService;
     @GetMapping("/search")
     public PageOutDTO<OrderListOutDTO> search(OrderSearchInDTO orderSearchInDTO, @RequestParam Integer pageNum){
         return null;
@@ -18,8 +22,9 @@ public class OrderController {
     @PostMapping("/checkout")
     public Long checkout(@RequestBody OrderCheckoutInDTO orderCheckoutInDTO,
                         @RequestAttribute Integer customerId){
+        Long orderId = orderService.checkeout(orderCheckoutInDTO, customerId);
 
-        return null;
+        return orderId;
     }
 
     @GetMapping("/getList")
