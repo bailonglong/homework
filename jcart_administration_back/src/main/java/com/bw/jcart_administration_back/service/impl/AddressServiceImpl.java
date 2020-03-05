@@ -4,35 +4,25 @@ import com.bw.jcart_administration_back.dao.AddressMapper;
 import com.bw.jcart_administration_back.po.Address;
 import com.bw.jcart_administration_back.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class AddressServiceImpl implements AddressService {
+
     @Autowired
     private AddressMapper addressMapper;
+
     @Override
     public Address getById(Integer addressId) {
-
-        return addressMapper.selectByPrimaryKey(addressId);
+        Address address = addressMapper.selectByPrimaryKey(addressId);
+        return address;
     }
 
     @Override
     public List<Address> getByCustomerId(Integer customerId) {
-        return null;
-    }
-
-    @Override
-    public Integer create(Address address) {
-        return null;
-    }
-
-    @Override
-    public void update(Address address) {
-
-    }
-
-    @Override
-    public void delete(Integer addressId) {
-
+        List<Address> addresses = addressMapper.selectByCustomerId(customerId);
+        return addresses;
     }
 }

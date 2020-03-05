@@ -14,10 +14,13 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+
 @Service
 public class ProductServiceImpl implements ProductService {
+
     @Autowired
     private ProductMapper productMapper;
 
@@ -25,13 +28,9 @@ public class ProductServiceImpl implements ProductService {
     private ProductDetailMapper productDetailMapper;
 
     @Override
-    public Product getById(Integer productId) {
-        Product product = productMapper.selectByPrimaryKey(productId);
-        return product;
-    }
-
-    @Override
+    @Transactional
     public Integer create(ProductCreateInDTO productCreateInDTO) {
+
         Product product = new Product();
         product.setProductCode(productCreateInDTO.getProductCode());
         product.setProductName(productCreateInDTO.getProductName());
@@ -42,9 +41,7 @@ public class ProductServiceImpl implements ProductService {
         product.setMainPicUrl(productCreateInDTO.getMainPicUrl());
         product.setRewordPoints(productCreateInDTO.getRewordPoints());
         product.setSortOrder(productCreateInDTO.getSortOrder());
-        String description = productCreateInDTO.getDescription();
-        String productAbstract = description.substring(0, Math.min(100, description.length()));
-        product.setProductAbstract(productAbstract);
+        product.setProductAbstract(productCreateInDTO.getProductAbstract());
         productMapper.insertSelective(product);
 
         Integer productId = product.getProductId();
@@ -60,7 +57,9 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    @Transactional
     public void update(ProductUpdateInDTO productUpdateInDTO) {
+
         Product product = new Product();
         product.setProductId(productUpdateInDTO.getProductId());
         product.setProductName(productUpdateInDTO.getProductName());
@@ -71,9 +70,7 @@ public class ProductServiceImpl implements ProductService {
         product.setStatus(productUpdateInDTO.getStatus());
         product.setRewordPoints(productUpdateInDTO.getRewordPoints());
         product.setSortOrder(productUpdateInDTO.getSortOrder());
-        String description = productUpdateInDTO.getDescription();
-        String productAbstract = description.substring(0, Math.min(100, description.length()));
-        product.setProductAbstract(productAbstract);
+        product.setProductAbstract(productUpdateInDTO.getProductAbstract());
         productMapper.updateByPrimaryKeySelective(product);
 
         ProductDetail productDetail = new ProductDetail();
@@ -86,13 +83,14 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    @Transactional
     public void delete(Integer productId) {
-
         productMapper.deleteByPrimaryKey(productId);
         productDetailMapper.deleteByPrimaryKey(productId);
     }
 
     @Override
+    @Transactional
     public void batchDelete(List<Integer> productIds) {
         productMapper.batchDelete(productIds);
         productDetailMapper.batchDelete(productIds);
@@ -106,7 +104,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public ProductShowOutDTO getShowById(Integer productId) {
+    public ProductShowOutDTO getById(Integer productId) {
         Product product = productMapper.selectByPrimaryKey(productId);
         ProductDetail productDetail = productDetailMapper.selectByPrimaryKey(productId);
 
@@ -121,6 +119,7 @@ public class ProductServiceImpl implements ProductService {
         productShowOutDTO.setRewordPoints(product.getRewordPoints());
         productShowOutDTO.setSortOrder(product.getSortOrder());
         productShowOutDTO.setStockQuantity(product.getStockQuantity());
+        productShowOutDTO.setProductAbstract(product.getProductAbstract());
 
         productShowOutDTO.setDescription(productDetail.getDescription());
         String otherPicUrlsJson = productDetail.getOtherPicUrls();

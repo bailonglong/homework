@@ -23,4 +23,3 @@ public class ClientException extends ServletException {
         this.errCode = errCode;
     }
 }
-

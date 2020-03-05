@@ -2,6 +2,7 @@ package com.bw.jcart_administration_back.dao;
 
 
 import com.bw.jcart_administration_back.po.Customer;
+import com.github.pagehelper.Page;
 
 public interface CustomerMapper {
     int deleteByPrimaryKey(Integer customerId);
@@ -15,4 +16,9 @@ public interface CustomerMapper {
     int updateByPrimaryKeySelective(Customer record);
 
     int updateByPrimaryKey(Customer record);
+
+//    custom
+
+    Page<Customer> search();
+
 }

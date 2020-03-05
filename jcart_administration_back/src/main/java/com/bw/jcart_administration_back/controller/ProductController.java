@@ -14,11 +14,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin
 @RequestMapping("/product")
+@CrossOrigin
 public class ProductController {
+
     @Autowired
     private ProductService productService;
+
     @GetMapping("/search")
     public PageOutDTO<ProductListOutDTO> search(ProductSearchInDTO productSearchInDTO,
                                                 @RequestParam(required = false, defaultValue = "1") Integer pageNum){
@@ -60,8 +62,4 @@ public class ProductController {
         productService.batchDelete(productIds);
     }
 
-    @GetMapping("/test")
-    public String test(){
-        return "测试";
-    }
 }
