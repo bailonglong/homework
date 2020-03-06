@@ -1,7 +1,8 @@
 package com.bw.jcart_store_back.dto.in;
 
 public class ReturnApplyInDTO {
-    private Integer orderId;
+
+    private Long orderId;
     private Long orderTimestamp;
     private String customerName;
     private String mobile;
@@ -13,11 +14,12 @@ public class ReturnApplyInDTO {
     private Boolean opened;
     private String comment;
 
-    public Integer getOrderId() {
+
+    public Long getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(Integer orderId) {
+    public void setOrderId(Long orderId) {
         this.orderId = orderId;
     }
 
