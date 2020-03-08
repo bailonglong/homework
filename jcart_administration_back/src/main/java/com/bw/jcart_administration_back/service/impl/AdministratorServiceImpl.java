@@ -27,6 +27,12 @@ public class AdministratorServiceImpl implements AdministratorService {
         Administrator administrator = administratorMapper.selectByUsername(username);
         return administrator;
     }
+	
+	@Override
+    public Administrator getByEmail(String email) {
+        Administrator administrator = administratorMapper.selectByEmail(email);
+        return administrator;
+    }
 
     @Override
     public Integer create(Administrator administrator) {
