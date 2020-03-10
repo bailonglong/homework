@@ -23,13 +23,4 @@ public interface OrderMapper {
     int updateByPrimaryKey(Order record);
 
     Page<Order> selectByCustomerId(@Param("customerId") Integer customerId);
-
-    //    custom
-
-    Page<OrderListOutDTO> search(@Param("orderId") Long orderId,
-                                 @Param("status") Byte status,
-                                 @Param("totalPrice") Double totalPrice,
-                                 @Param("customerName") String customerName,
-                                 @Param("startTime") Date startTime,
-                                 @Param("endTime") Date endTime);
 }
