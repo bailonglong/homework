@@ -1,9 +1,12 @@
 package com.bw.jcart_store_back.dao;
 
+import com.bw.jcart_store_back.dto.out.OrderListOutDTO;
 import com.bw.jcart_store_back.po.Order;
 import com.github.pagehelper.Page;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
+
+import java.util.Date;
 
 @Repository
 public interface OrderMapper {
@@ -21,4 +24,12 @@ public interface OrderMapper {
 
     Page<Order> selectByCustomerId(@Param("customerId") Integer customerId);
 
+    //    custom
+
+    Page<OrderListOutDTO> search(@Param("orderId") Long orderId,
+                                 @Param("status") Byte status,
+                                 @Param("totalPrice") Double totalPrice,
+                                 @Param("customerName") String customerName,
+                                 @Param("startTime") Date startTime,
+                                 @Param("endTime") Date endTime);
 }
