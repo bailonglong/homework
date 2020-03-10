@@ -2,6 +2,9 @@ package com.bw.jcart_administration_back.dao;
 
 
 import com.bw.jcart_administration_back.po.ReturnHistory;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface ReturnHistoryMapper {
     int deleteByPrimaryKey(Long returnHistoryId);
@@ -15,4 +18,8 @@ public interface ReturnHistoryMapper {
     int updateByPrimaryKeySelective(ReturnHistory record);
 
     int updateByPrimaryKey(ReturnHistory record);
+
+    //    custom
+
+    List<ReturnHistory> selectListByReturnId(@Param("returnId") Integer returnId);
 }
