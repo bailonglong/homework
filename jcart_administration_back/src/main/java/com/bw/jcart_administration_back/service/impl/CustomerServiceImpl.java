@@ -1,6 +1,7 @@
 package com.bw.jcart_administration_back.service.impl;
 
 import com.bw.jcart_administration_back.dao.CustomerMapper;
+import com.bw.jcart_administration_back.dto.in.CustomerSearchInDTO;
 import com.bw.jcart_administration_back.dto.in.CustomerSetStatusInDTO;
 import com.bw.jcart_administration_back.po.Customer;
 import com.bw.jcart_administration_back.service.CustomerService;
@@ -16,9 +17,14 @@ public class CustomerServiceImpl implements CustomerService {
     private CustomerMapper customerMapper;
 
     @Override
-    public Page<Customer> search(Integer pageNum) {
+    public Page<Customer> search(CustomerSearchInDTO customerSearchInDTO, Integer pageNum) {
         PageHelper.startPage(pageNum, 10);
-        Page<Customer> page = customerMapper.search();
+        Page<Customer> page = customerMapper
+                .search(customerSearchInDTO.getUsername(),
+                        customerSearchInDTO.getRealName(),
+                        customerSearchInDTO.getMobile(),
+                        customerSearchInDTO.getEmail(),
+                        customerSearchInDTO.getStatus());
         return page;
     }
 
