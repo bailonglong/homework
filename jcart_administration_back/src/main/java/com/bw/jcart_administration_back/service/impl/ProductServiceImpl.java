@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.bw.jcart_administration_back.dao.ProductDetailMapper;
 import com.bw.jcart_administration_back.dao.ProductMapper;
 import com.bw.jcart_administration_back.dto.in.ProductCreateInDTO;
+import com.bw.jcart_administration_back.dto.in.ProductSearchInDTO;
 import com.bw.jcart_administration_back.dto.in.ProductUpdateInDTO;
 import com.bw.jcart_administration_back.dto.out.ProductListOutDTO;
 import com.bw.jcart_administration_back.dto.out.ProductShowOutDTO;

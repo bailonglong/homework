@@ -1,6 +1,7 @@
 package com.bw.jcart_administration_back.service;
 
 import com.bw.jcart_administration_back.dto.in.ProductCreateInDTO;
+import com.bw.jcart_administration_back.dto.in.ProductSearchInDTO;
 import com.bw.jcart_administration_back.dto.in.ProductUpdateInDTO;
 import com.bw.jcart_administration_back.dto.out.ProductListOutDTO;
 import com.bw.jcart_administration_back.dto.out.ProductShowOutDTO;
