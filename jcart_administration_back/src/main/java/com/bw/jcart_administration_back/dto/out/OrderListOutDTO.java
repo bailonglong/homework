@@ -17,6 +17,13 @@ public class OrderListOutDTO {
     private Date updateTime;
     private Long updateTimestamp;
 
+    public Long getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(Long orderId) {
+        this.orderId = orderId;
+    }
 
     public Integer getCustomerId() {
         return customerId;
@@ -34,14 +41,6 @@ public class OrderListOutDTO {
         this.customerName = customerName;
     }
 
-    public Long getCreateTimestamp() {
-        return this.createTime == null ? null : this.createTime.getTime();
-    }
-
-    public Long getUpdateTimestamp() {
-        return this.updateTime == null ? null : this.updateTime.getTime();
-    }
-
     public Byte getStatus() {
         return status;
     }
@@ -50,12 +49,12 @@ public class OrderListOutDTO {
         this.status = status;
     }
 
-    public Long getOrderId() {
-        return orderId;
+    public Double getTotalPrice() {
+        return totalPrice;
     }
 
-    public void setOrderId(Long orderId) {
-        this.orderId = orderId;
+    public void setTotalPrice(Double totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
     public Date getCreateTime() {
@@ -66,6 +65,14 @@ public class OrderListOutDTO {
         this.createTime = createTime;
     }
 
+    public Long getCreateTimestamp() {
+        return createTimestamp;
+    }
+
+    public void setCreateTimestamp(Long createTimestamp) {
+        this.createTimestamp = createTimestamp;
+    }
+
     public Date getUpdateTime() {
         return updateTime;
     }
@@ -74,11 +81,11 @@ public class OrderListOutDTO {
         this.updateTime = updateTime;
     }
 
-    public Double getTotalPrice() {
-        return totalPrice;
+    public Long getUpdateTimestamp() {
+        return updateTimestamp;
     }
 
-    public void setTotalPrice(Double totalPrice) {
-        this.totalPrice = totalPrice;
+    public void setUpdateTimestamp(Long updateTimestamp) {
+        this.updateTimestamp = updateTimestamp;
     }
 }
